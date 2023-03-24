@@ -22,8 +22,6 @@ var lowercase = window.confirm("Do you want lowercase letters? If no, click canc
 var uppercase = window.confirm("Do you want uppercase letters? If no, click cancel")
 var numbers = window.confirm("Do you want to use numbers? If no, click cancel")
 var special = window.confirm("Do you want to use special characters? If no, click cancel")
-var password = generatePassword();
-var passwordText = document.querySelector("#password");
 
   // Password Length
   var length = parseInt(prompt("Enter a password length between 8 and 128 characters"));
@@ -40,15 +38,60 @@ if(length > 8 || length > 128)
     generatePassword();
   }
 
+  if(uppercase === false && lowercase === false && special === false && numbers === false)
+  {
+    alert("You must select at least one option");
+    generatePassword();
+  }
+  
+  if(uppercase)
+  {
+    options = options.concat(uppercase);
+    finalChar.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
+    console.log(options);
+    console.log(finalChar);
+  }
+  if(lowercase)
+  {
+    options = options.concat(lowercase);
+    finalChar.push(lowercase[Math.floor(Math.random() * lowerChar.length)]);
+    console.log(options);
+    console.log(finalChar);
+  }
+  
 
 
 
 
+
+
+
+
+
+
+
+  for(var i=0; i<length; i++){
+    possibleChar.push(options[Math.floor(Math.random() * options.length)]);
+    console.log(possibleChar);
+  }
+  
+  for(var i=0; i<finalChar.length;i++)
+  {
+    possibleChar[i] = finalChar[i];
+  }
+  
+  // final password
+    return possibleChar.join("");
+  }
+
+
+  var password = generatePassword();
+var passwordText = document.querySelector("#password");
 passwordText.value = password;
 
-}
+
 
 // Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
 
 generatepassword ()
