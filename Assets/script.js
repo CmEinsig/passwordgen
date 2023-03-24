@@ -32,44 +32,46 @@ if(Number.isNaN(length)){
     alert("Password length must be a number");
     generatePassword();
   }
-if(length > 8 || length > 128)
+if(length < 8 || length > 128)
   {
     alert("Password length must be between 8 and 128 characters");
     generatePassword();
   }
 
-  if(uppercase === false && lowercase === false && special === false && numbers === false)
+if(uppercase === false && lowercase === false && special === false && numbers === false)
   {
     alert("You must select at least one option");
     generatePassword();
   }
   
-  if(uppercase)
+if(uppercase)
   {
     options = options.concat(uppercase);
     finalChar.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
     console.log(options);
     console.log(finalChar);
   }
-  if(lowercase)
+if(lowercase)
   {
     options = options.concat(lowercase);
-    finalChar.push(lowercase[Math.floor(Math.random() * lowerChar.length)]);
+    finalChar.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
     console.log(options);
     console.log(finalChar);
   }
-  
-
-
-
-
-
-
-
-
-
-
-
+if(numbers)
+{
+  options = options.concat(numbers);
+  finalChar.push(numbers[Math.floor(Math.random() * numbers.length)]);
+  console.log(options);
+  console.log(finalChar);
+}
+if(special)
+{
+  options = options.concat(special);
+  finalChar.push(special[Math.floor(Math.random() * special.length)]);
+  console.log(options);
+  console.log(finalChar);
+}
   for(var i=0; i<length; i++){
     possibleChar.push(options[Math.floor(Math.random() * options.length)]);
     console.log(possibleChar);
