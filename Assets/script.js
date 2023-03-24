@@ -17,16 +17,57 @@ special = [" !@#$%^&*()"]
 // Write password to the #password input
 var generatepassword =function () {
 var length = window.prompt("Enter a password length between 8 and 128 characters")
-var lowercase = window.prompt ("Do you want lowercase letters?")
-var uppercase = window.prompt ("Do you want uppercase letters?")
-var numbers = window.prompt ("Do you want to use numbers?")
-var special = window.prompt ("Do you want to use special characters?")
+var lowercase = window.prompt("Do you want lowercase letters? type yes or no.")
+var uppercase = window.prompt("Do you want uppercase letters? type yes or no.")
+var numbers = window.prompt("Do you want to use numbers? type yes or no.")
+var special = window.prompt("Do you want to use special characters? type yes or no.")
 
- //passwordText.value = password;
+//convert choices for compare
+lowercase = lowercase.toUpperCase();
+uppercase = uppercase.toUpperCase();
+numbers = numbers.toUpperCase();
+special = special.toUpperCase();
+
+if (lowercase === yes){
+}
+else if (lowercase === no) {
+}
+else {  
+window.prompt ("Please enter yes or no")
+}
+
+if (uppercase === yes){
+}
+else if (uppercase === no) {
+}
+else {  
+window.prompt ("Please enter yes or no")
+}
+
+if (numbers === yes){
+}
+else if (numbers === no) {
+}
+else {  
+window.prompt ("Please enter yes or no")
+}
+
+if (special === yes){
+
+}
+else if (special === no) {
+}
+else {  
+window.prompt ("Please enter yes or no")
+}
+
+
+
+passwordText.value = password;
 
 }
 
 // Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
 
 generatepassword ()
