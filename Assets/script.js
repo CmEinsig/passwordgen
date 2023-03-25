@@ -17,7 +17,6 @@ var numbers = window.confirm("Do you want to use numbers? If no, click cancel")
 var special = window.confirm("Do you want to use special characters? If no, click cancel")
 
   // Password Length
-  var length = parseInt(prompt("Enter a password length between 8 and 128 characters"));
   var finalChar = [];
   var possibleChar = [];
   var options = [];
@@ -73,7 +72,7 @@ if(special)
 
   var generateBtn = document.querySelector("#generate");
 function writePassword() {
-  var password = generatePassword();
+//var password = generatePassword();
 var passwordText = document.querySelector("#password");
 passwordText.value = password;
 
