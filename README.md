@@ -11,6 +11,7 @@ None
 
 Usage is available on the website. You can click the password prompts to get a random password. 
 
+[link to deployed link](https://cmeinsig.github.io/passwordgen/Links)
 
 ![Screenshot of portfolio webpage](./Assets/screencapture-file-C-Users-Courtney-challenges-passwordgen-index-html-2023-03-24-20_03_51.png)
 
