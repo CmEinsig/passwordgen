@@ -1,3 +1,5 @@
+//List of variables 
+var generateBtn = document.querySelector("#generate");
 //Arrays for computer to choose from 
 length = [8 <= 128]
 lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
@@ -7,78 +9,94 @@ uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N
 numbers = [1,2,3,4,5,6,7,8,9]
 special = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')','(','}','{',']', '[', '~', '-', '_', '.',];
 
+ // Password Length
+var enter;
+var confirmNumber;
+var confirmCharacter;
+var confirmUppercase;
+var confirmLowercase;
+var choices;
+var password = []
 
-// Write password to the #password input
-var generatepassword = function () {
-var length = window.prompt("Enter a password length between 8 and 128 characters")
-var lowercase = window.confirm("Do you want lowercase letters? If no, click cancel")
-var uppercase = window.confirm("Do you want uppercase letters? If no, click cancel")
-var numbers = window.confirm("Do you want to use numbers? If no, click cancel")
-var special = window.confirm("Do you want to use special characters? If no, click cancel")
+// declartion of the function
+function generatePassword() {
+  enter = prompt("Between 8 and 128 characters. Please enter how long you would like your password to be");
+  if (!enter) {
+    // alerts the user if condition is not met
+    alert("This needs a value");
+    // warns the user that the condition must be between 8 and 128
+  } else if (enter < 8 || enter > 128) {
+    enter = prompt("Number must be between 8 and 128 characters.");
+    return;
+  } else {
+// User password information
+confirmNumber = confirm("Do you want to use numbers?");
+confirmCharacter = confirm("Do you want to use special characters?");
+confirmLowercase = confirm("Do you want to use lowercase letters?");
+confirmUppercase = confirm("Do you want to use uppercase letter?");
+};
 
-  // Password Length
-  var finalChar = [];
-  var possibleChar = [];
-  var options = [];
-
-
-if(uppercase === false && lowercase === false && special === false && numbers === false)
-  {
-    alert("You must select at least one option");
-    generatePassword();
-  }
-  
-if(uppercase)
-  {
-    options = options.concat(uppercase);
-    finalChar.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
-    console.log(options);
-    console.log(finalChar);
-  }
-if(lowercase)
-  {
-    options = options.concat(lowercase);
-    finalChar.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
-    console.log(options);
-    console.log(finalChar);
-  }
-if(numbers)
-{
-  options = options.concat(numbers);
-  finalChar.push(numbers[Math.floor(Math.random() * numbers.length)]);
-  console.log(options);
-  console.log(finalChar);
+if (!confirmNumber && !confirmCharacter && !confirmLowercase && !confirmUppercase) {
+  // warns user if all criterias are false
+  choices = alert("You must choose at least one option!")
+  return``;
+  // Pathways for different user input options 
+} else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
+  choices = special.concat(numbers, lowercase, uppercase);
+  // Password contains special characters, numbers and uppercase 
+} else if (confirmCharacter && confirmNumber && confirmUppercase) {
+  choices = special.concat(numbers, uppercase);
+// Password contains special characters, number and lowercase 
+} else if (confirmCharacter && confirmNumber && confirmLowercase) {
+  choices = special.concat(numbers, lowercase);
+//Password contains numbers, upper and lower case 
+} else if (confirmNumber && confirmUppercase && confirmLowercase) {
+  choices = numbers.concat(lowercase, uppercase);
+//Password contains numbers and special characters  
+} else if (confirmCharacter && confirmNumber) {
+  choices = special.concat(numbers);
+  // Password contains special characters and lowercase 
+} else if (confirmCharacter && confirmLowercase) {
+  choices = special.concat(lowercase);
+//Password contains special characters and uppercase 
+} else if (confirmCharacter && confirmUppercase) {
+  choices = special.concat(uppercase);
+//Password contains lowercase and numbers 
+}else if (confirmLowercase && confirmNumber) {
+  choices = lowercase.concat(numbers);
+//Password contained lower and upper case 
+} else if (confirmLowercase && confirmUppercase) {
+  choices = lowercase.concat(uppercase);
+//Password contains numbers and uppercase 
+} else if (confirmNumber && confirmUppercase) {
+  choices = numbers.concat(uppercase);
+ // Password only contains special characters 
+} else if (confirmCharacter) {
+  choices = special;
+//Password only contains numbers 
+} else if (confirmNumber) {
+  choices = numbers;
+//Password only contains lowercase
+} else if (confirmLowercase) {
+  choices = lowercase;
+//Password only contains uppercase 
+}else if (confirmUppercase) {
+  choices = uppercase;
 }
-if(special)
-{
-  options = options.concat(special);
-  finalChar.push(special[Math.floor(Math.random() * special.length)]);
-  console.log(options);
-  console.log(finalChar);
+for (var i = 0; i < enter; i ++) {
+  var pickChoices = choices[Math.floor(Math.random() * choices.length)]
+  password.push(pickChoices);
 }
-  for(var i=0; i<length; i++){
-    possibleChar.push(options[Math.floor(Math.random() * options.length)]);
-    console.log(possibleChar);
-  }
-  
-  for(var i=0; i<finalChar.length;i++)
-  {
-    possibleChar[i] = finalChar[i];
-  }
-  
-  // final password
-    return possibleChar.join("");
-  }
+return password.join('');
+}
 
-  var generateBtn = document.querySelector("#generate");
+//Generates password to user 
 function writePassword() {
-//var password = generatePassword();
+var password = generatePassword();
 var passwordText = document.querySelector("#password");
 passwordText.value = password;
 
-
-}
-// Add event listener to generate button
+}// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 generatepassword ()
